@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title%}
+    Inventario
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edicion Inventario</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarInventario/" method="POST" >{% csrf_token %}
+                   <div class="form-group">
+                       <input type="text" id="txtCodigo" name="txtCodigo" value="{{inventario.codigo_inventario}}" class="form-control" placeholder="Codigo" minlength="1" maxlength="6" readonly required>
+                   </div> 
+                   <div class="form-group">
+                    <input type="text" id="txtNombre" name="txtNombre" value="{{inventario.nombre_p}}" class="form-control" placeholder="Nombre" minlength="1" maxlength="50" required>
+                </div> 
+                <div class="form-group">
+                    <input type="number" id="txtCantidad" name="txtCantidad" value="{{inventario.cantidad}}" class="form-control" placeholder="Cantidad" minlength="1" maxlength="6" required>
+                </div> 
+                
+
+                <div class="form-group">
+                    <input type="number" name="txtPrecio" id="txtPrecio" value="{{inventario.precio}}" class="form-control" rows="5" cols="20" placeholder="Descripcion"></textarea>
+                </div> 
+
+        {% comment %}   
+                <div class="form-group">
+                    <textarea name="textDescripcion" id="txtDescripcion" value="{{inventario.descripcion}}" class="form-control" rows="5" cols="20" placeholder="Descripcion"></textarea>
+                </div> 
+
+        {% endcomment %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-success text-red">Enviar</button>
+                </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

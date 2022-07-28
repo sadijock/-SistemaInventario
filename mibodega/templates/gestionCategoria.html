@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title%}
+    Categorias
+{% endblock %}
+
+
+
+
+{% block body %}
+<div class="row">
+    {% comment %} formulario inventario {% endcomment %}
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Formulario Categoria</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarCategoria/" method="POST" > {% csrf_token %}
+                   <div class="form-group">
+                       <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Codigo C" minlength="1" maxlength="6" required>
+                   </div> 
+                   <div class="form-group">
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre Categoria" minlength="1" maxlength="50" required>
+                </div> 
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-success text-red">Enviar</button>
+                </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+    {% comment %} mostrar inventario {% endcomment %}
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">    
+        <h1>Gestion Categoria</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                   <tr> 
+                    <th>#</th>
+                    <th>Codigo Categoria</th>
+                    <th>Nombre Categoria</th>
+                    <th colspan=2>Opciones</th>
+                    <th></th>
+                   </tr>
+                </thead>
+               <tbody>
+
+               {% for c in categorias %}
+               <tr> 
+                <td>{{forloop.counter}}</td>
+                <td>{{c.codigo_Categoria}}</td>
+                <td>{{c.nombre_c}}</td>
+                <td><a href="edicionCategoria/{{c.codigo_Categoria}}" class="btn btn-info">
+                    upd </a></td></td>
+                <td><a href="eliminarCategoria/{{c.codigo_Categoria}}" class="btn btn-danger btnElimi">X</td>
+                
+                </tr>
+
+               {% endfor%}
+
+               </tbody>     
+            </table>
+        </div>
+    </div> 
+{% endblock %}

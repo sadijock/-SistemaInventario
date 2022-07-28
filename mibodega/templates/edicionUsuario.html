@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title%}
+    Usuarios
+{% endblock %}
+
+
+{% block body%}
+<div class ="row">
+    <div class="col-md-4 offset-md-4">
+        {% comment %} Formulario para actualizar {% endcomment %}
+
+            <h2>Edicion Usuario</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarUsuario/" method="POST" >{% csrf_token %}
+                       <div class="form-group">
+                           <input type="text" id="txtCodigo" name="txtCodigo" value="{{usuario.codigo_us}}" class="form-control" placeholder="Codigo" minlength="1" maxlength="6" readonly required>
+                       </div> 
+                       <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{usuario.nombre_completo}}"  class="form-control" placeholder="Nombre" minlength="1" maxlength="50" required>
+                    </div> 
+                    <div class="form-group">
+                        <input type="number" id="txtTelefono" name="txtTelefono" value="{{usuario.telefono}}" class="form-control" placeholder="Telefono" minlength="1" maxlength="10" required>
+                    </div> 
+        
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-success text-red">Enviar</button>
+                    </div> 
+                    </form>
+                </div>
+            </div>
+
+    </div>
+</div>
+
+{% endblock %}
