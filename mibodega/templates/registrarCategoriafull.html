@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title%}
+    Categorias full
+{% endblock %}
+
+
+
+{% block body %}
+<form action="" method="POST">
+
+{% csrf_token %}
+{{ form.as_p  }}
+<button type="submit" class="btn btn-block btn-success text-red">Enviar</button>
+
+</form>
+{% endblock %}

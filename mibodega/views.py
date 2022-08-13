@@ -1,7 +1,10 @@
 from django.shortcuts import redirect, render
 from .models import Categoria, Inventario, Usuario
+from  .forms import FormCategoria
 
 # Create your views here.
+def home(request):
+    return render(request, 'home.html')
 
 def Ge_inventario(request):
     inventario = Inventario.objects.all()
@@ -101,6 +104,14 @@ def registarCategoria(request):
         codigo_Categoria=codigo_ca, nombre_c=nombre_ca
     )
     return redirect('/gestionCategoria/')
+
+def registrarCategoriafull(request):
+    # acceder a mi obejto llamarlo 
+    formulario = FormCategoria()
+    # cargo la vista,  le paso la variable formulario al form para mostrar esa propiedad
+    return render(request, 'registrarCategoriafull.html',{
+        'form': formulario
+    })
 
 
 def edicionCategoria(request, codigo_Categoria):

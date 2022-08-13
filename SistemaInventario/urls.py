@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from mibodega.views import Ge_inventario,  Ge_usuario, registrarInventario, Ge_categoria, registrarUsuario, registarCategoria, eliminarUsuario, edicionUsuario, editarUsuario, edicionCategoria, editarCategoria, eliminarCategoria,                           editarInventario, edicionInventario, eliminarInventario
+from mibodega.views import Ge_inventario,  Ge_usuario, home, registrarInventario, Ge_categoria, registrarUsuario, registarCategoria, eliminarUsuario, edicionUsuario, editarUsuario, edicionCategoria, editarCategoria, eliminarCategoria,editarInventario, edicionInventario, eliminarInventario, registrarCategoriafull
 # from mibodega import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Ge_usuario, name="index"),
+    path('', home, name="home"),
+    path('gestionUsuario/', Ge_usuario, name="index"),
 
     path('gestionInventario/', Ge_inventario, name="inventario"),  
     path('registrarInventario/', registrarInventario ), 
@@ -41,6 +42,7 @@ urlpatterns = [
     path('gestionCategoria/edicionCategoria/<codigo_Categoria>', edicionCategoria),
     path('editarCategoria/', editarCategoria ), 
     path('gestionCategoria/eliminarCategoria/<codigo_Categoria>', eliminarCategoria),
+    path('registrarCategoriafull/', registrarCategoriafull, name="categoriafull"),
 
 
 ]
